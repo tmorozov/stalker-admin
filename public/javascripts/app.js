@@ -3,46 +3,32 @@
 var sandbox_extension = sandbox_extension || {};
 var app = new core.Application(sandbox_extension);
 
-function initLayout() {
-	var layout = new dhtmlXLayoutObject(document.body, "3J");
-	layout.cells("a").setText("Tree");
-	layout.cells("c").setText("Details");
-	layout.cells("b").setText("Map");
-	layout.cells("a").setWidth(500);
-	return layout;
+function initTabbar() {
+	var tabbar = new dhtmlXTabBar(document.body, "top");
+	tabbar.addTab("users","Users","100px");
+	tabbar.addTab("quests","Quests","100px");
+	return tabbar;
 }
 
-app.sandbox.on('show:info', function (id) {
-	// app.layout.cells("a").view(id).setActive();
-});
+// function initLayout() {
+// 	var layout = new dhtmlXLayoutObject(document.body, "3J");
+// 	layout.cells("a").setText("Tree");
+// 	layout.cells("c").setText("Details");
+// 	layout.cells("b").setText("Map");
+// 	layout.cells("a").setWidth(500);
+// 	return layout;
+// }
+
 
 app.addInitializer(function (options) {
-	app.layout = initLayout();
-
-	// app.layout.cells("a").view("npc");
-	// app.layout.cells("a").view("group");
-	// app.layout.cells("a").view("users");
-	// app.layout.cells("a").view("items");
-	// app.layout.cells("a").view("levels");
-	// app.layout.cells("a").view("quests");
-
+	var tabbar = initTabbar();
 	core.extend(options, {
-		toolbar: {
-			holder: app.layout
-		},
-		tree: {
-			holder: app.layout.cells("a")
-		},
-		details: {
-			holder: app.layout.cells("c")
-		},
-		map: {
-			holder: app.layout.cells("b")
-		},
-		popups: {
-			holder: app.layout
+		users: {
+			holder: tabbar.cells('users')
 		}
 	});
+
+	app.tabbar = tabbar;
 });
 
 
