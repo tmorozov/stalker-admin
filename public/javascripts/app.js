@@ -10,15 +10,6 @@ function initTabbar() {
 	return tabbar;
 }
 
-// function initLayout() {
-// 	var layout = new dhtmlXLayoutObject(document.body, "3J");
-// 	layout.cells("a").setText("Tree");
-// 	layout.cells("c").setText("Details");
-// 	layout.cells("b").setText("Map");
-// 	layout.cells("a").setWidth(500);
-// 	return layout;
-// }
-
 
 app.addInitializer(function (options) {
 	var tabbar = initTabbar();

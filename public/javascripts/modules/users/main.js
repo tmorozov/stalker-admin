@@ -10,6 +10,9 @@ app.module('users', function(mod, sandbox) {
 	mod.addInitializer(function (opt) {
 		var layout = initLayout(opt.users.holder);
 		core.extend(opt.users, {
+			toolbar: {
+				holder: layout.cells('a')
+			},
 			list: {
 				holder: layout.cells('a')
 			}
