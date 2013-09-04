@@ -1,12 +1,14 @@
 app.module('users').module('list', function(mod, sandbox) {
+	var mod = this;
+
 	function initGrid(holder) {
 		var grid = holder.attachGrid();
 		grid.setHeader("Active,Name,Phone");
-		grid.attachHeader(",#text_filter,#text_filter");
-		grid.setInitWidths("50,100,*");
-		grid.setColAlign("center,left,left");
+		// grid.attachHeader(",#text_filter,#text_filter");
+		// grid.setInitWidths("50,100,*");
+		// grid.setColAlign("center,left,left");
 		grid.setColTypes("ch,ed,ed");
-		grid.setColSorting("na,str,str");
+		// grid.setColSorting("na,str,str");
 		grid.setColumnIds("active,name,phone");
 		grid.init();
 		return grid;
@@ -25,8 +27,16 @@ app.module('users').module('list', function(mod, sandbox) {
 		console.log("row:"+rowId, "state:" , state);
 	}
 
+	function onRowSelect (id, ind) {
+		sandbox.trigger('user:selected', id);
+	}
+
 	sandbox.on('users:readed', function (data) {
 		mod.users.parse(data, "js");
+	});
+
+	sandbox.on('user:deleted', function (id) {
+		mod.users.deleteRow(id);
 	});
 
 	mod.addInitializer(function (opt) {
@@ -34,6 +44,7 @@ app.module('users').module('list', function(mod, sandbox) {
 		sandbox.trigger('users:read');
 		users.attachEvent("onEditCell",onEditCell);
 		users.attachEvent("onCheck", onCheck);
+		users.attachEvent("onRowSelect", onRowSelect);
 		mod.users = users;
 	});
 });
