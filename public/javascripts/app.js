@@ -3,17 +3,24 @@
 var sandbox_extension = sandbox_extension || {};
 var app = new core.Application(sandbox_extension);
 
-function initTabbar() {
-	var tabbar = new dhtmlXTabBar(document.body, "top");
-	tabbar.addTab("users","Users","100px");
-	tabbar.addTab("locations","Locations","100px");
-	tabbar.addTab("quests","Quests","100px");
+function initLayout(holder) {
+	var layout = new dhtmlXLayoutObject(holder, "1C");
+	return layout;
+}
+
+function initTabbar(holder) {
+	var tabbar = holder.attachTabbar("top");
+	tabbar.addTab("users","Users","*");
+	tabbar.addTab("locations","Locations","*");
+	tabbar.addTab("quests","Quests","*");
 	return tabbar;
 }
 
 
 app.addInitializer(function (options) {
-	var tabbar = initTabbar();
+	var layout = initLayout(document.body);
+	var tabbar = initTabbar(layout.cells('a'));
+
 	core.extend(options, {
 		users: {
 			holder: tabbar.cells('users')

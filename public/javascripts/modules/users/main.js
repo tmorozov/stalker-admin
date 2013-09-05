@@ -1,9 +1,10 @@
 app.module('users', function(mod, sandbox) {
 	function initLayout(holder) {
-		var layout = new dhtmlXLayoutObject(holder, "2U");
+		var layout = holder.attachLayout("2U");
 		layout.cells("a").setText("Users");
 		layout.cells("b").setText("Details");
 		layout.cells("a").setWidth(500);
+
 		return layout;
 	}
 
