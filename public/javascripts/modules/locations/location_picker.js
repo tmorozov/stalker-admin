@@ -15,8 +15,8 @@ app.module('locations', function(mod, sandbox) {
 		google.maps.event.addListener(map, 'click', function(event) {
 			mod.Location.create({
 				description: 'new location',
-				lat: event.latLng.ob, 
-				lon: event.latLng.pb
+				lat: event.latLng.lat(),
+				lon: event.latLng.lng()
 			});
 		});
 
