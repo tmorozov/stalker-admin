@@ -1,7 +1,6 @@
 app.module('locations', function(mod, sandbox) {
-	mod.initMap = function (holder) {
-		var center = [49.8622, 23.9171];
-		var points = [];
+	mod.initMap = function (holder, mapCenter) {
+		var center = mapCenter || [49.8622, 23.9171];
 
 		var mapOptions = {
 			disableDefaultUI: true,
@@ -11,24 +10,27 @@ app.module('locations', function(mod, sandbox) {
 		};
 		var map = new google.maps.Map(holder, mapOptions);
 
-		var image = '/images/target.png';
-
-		for (var i=points.length-1; i>=0; i--) {
-			var point = points[i];
-			var myLatLng = new google.maps.LatLng(point[1], point[2]);
-			var beachMarker = new google.maps.Marker({
-				position: myLatLng,
-				map: map,
-				title: point[0],
-				icon: '/images/'+point[3]+'.png'
-			});
-		}
-
 		google.maps.event.addListener(map, 'click', function(event) {
-			console.log(event.latLng.ob, event.latLng.pb);
+			mod.trigger('map:position:selected', event.latLng.ob, event.latLng.pb);
+			// console.log(event.latLng.ob, event.latLng.pb);
 		});
 
 		mod.map = map;
+	};
+
+	function addPoint(lat, lon) {
+		var myLatLng = new google.maps.LatLng(lat, lon);
+		var marker = new google.maps.Marker({
+			position: myLatLng,
+			map: mod.map,
+			title: '',
+			icon: '/images/target.png'
+		});
 	}
+
+	// mock
+	mod.on('map:position:selected', function(lat, lon) {
+		addPoint(lat, lon);
+	});
 
 });
