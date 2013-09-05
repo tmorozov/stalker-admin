@@ -1,10 +1,12 @@
 
 var users = [{
 		id: 1,
+		active: 1,
 		"name": "Вася",
 		"phone": "1114124"
 	}, {
 		id: 2,
+		active: 0,
 		"name": "Иван",
 		"phone": "1114123"
 	}
@@ -50,6 +52,7 @@ exports.update = function(req, res){
 	var user = getUserById(req.params.id);
 	var update = req.body;
 	if(user) {
+		user.active = update.active;
 		user.name = update.name;
 		user.phone = update.phone;
 	}
@@ -67,6 +70,7 @@ exports.create = function(req, res){
 
 	var user = {
 		id: next_id,
+		active:update.active,
 		name: update.name,
 		phone: update.phone
 	};
