@@ -13,6 +13,6 @@ app.module('users', function(mod, sandbox) {
 		mod.winCreator = mod.layout.dhxWins;
 
 		mod.users = mod.initGrid(mod.layout.cells('a'));
-		sandbox.trigger('users:read');
+		mod.Users.read();
 	});
 });
