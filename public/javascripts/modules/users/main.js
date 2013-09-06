@@ -15,6 +15,9 @@ app.module('users', function(mod, sandbox) {
 			},
 			list: {
 				holder: layout.cells('a')
+			},
+			popups: {
+				holder: layout
 			}
 		});
 

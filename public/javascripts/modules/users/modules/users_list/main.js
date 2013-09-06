@@ -29,7 +29,7 @@ app.module('users').module('list', function(mod, sandbox) {
 		updateUser(rowId);
 	}
 
-	function loadFromGrid(id) {
+	function getDataInRow(id) {
 		var grid = mod.users;
 		var data = {
 			id: id,
@@ -41,16 +41,17 @@ app.module('users').module('list', function(mod, sandbox) {
 		return data;
 	}
 
-	function setToGrid(data) {
+	function setDataInRow(data) {
+
 		var grid = mod.users;
 		var id = data.id;
 		grid.cells(id,0).setValue(data.active);
-		grid.cells(id,1).getValue(data.name);
-		grid.cells(id,2).getValue(data.phone);
+		grid.cells(id,1).setValue(data.name);
+		grid.cells(id,2).setValue(data.phone);
 	}
 
 	function updateUser(id) {
-		var data = loadFromGrid(id);
+		var data = getDataInRow(id);
 		sandbox.trigger('user:update', data);
 	}
 
@@ -67,7 +68,12 @@ app.module('users').module('list', function(mod, sandbox) {
 	});
 
 	sandbox.on('user:updated', function (data) {
-		setToGrid(data);
+		setDataInRow(data);
+	});
+
+	sandbox.on('user:created', function (data) {
+		mod.users.addRow(data.id, '', null);
+		setDataInRow(data);		
 	});
 
 	mod.addInitializer(function (opt) {
