@@ -20,7 +20,7 @@ app.module('users', function(mod, sandbox) {
 
 	function onFormSubmit(name, command) {
 		var data = mod.form.getFormData();
-		sandbox.trigger('user:create', data);
+		mod.User.create(data);
 	}
 
 	sandbox.on('user:created', function () {

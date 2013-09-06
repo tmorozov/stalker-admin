@@ -11,7 +11,7 @@ app.module('users', function(mod, sandbox) {
 			if (id === 'add') {
 				sandbox.trigger('user:new');
 			} else if (id === 'del' && mod.selectedUserId ) {
-				sandbox.trigger('user:delete', mod.selectedUserId);
+				mod.User.del(mod.selectedUserId);
 			}
 		});
 		return toolbar;

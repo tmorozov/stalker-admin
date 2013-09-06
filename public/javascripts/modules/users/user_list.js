@@ -56,7 +56,7 @@ app.module('users', function(mod, sandbox) {
 
 	function updateUser(id) {
 		var data = getDataInRow(id);
-		sandbox.trigger('user:update', data);
+		mod.User.update(data);
 	}
 
 	function onRowSelect (id, ind) {
