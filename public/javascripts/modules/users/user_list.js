@@ -20,7 +20,6 @@ app.module('users', function(mod, sandbox) {
 
 	function onEditCell(stage, rowId, cellIndex, newValue, oldValue) {
 		if ( stage ===2 && newValue !== oldValue) {
-			console.log(rowId,cellIndex,newValue,oldValue);
 			updateUser(rowId);
 			return true;
 		}
@@ -29,11 +28,10 @@ app.module('users', function(mod, sandbox) {
 	}
 
 	function onCheck(rowId, cellIndex, state) {
-		console.log("row:"+rowId, "state:" , state);
 		updateUser(rowId);
 	}
 
-	function getDataInRow(id) {
+	function getDataFromRow(id) {
 		var grid = mod.users;
 		var data = {
 			id: id,
@@ -55,7 +53,7 @@ app.module('users', function(mod, sandbox) {
 	}
 
 	function updateUser(id) {
-		var data = getDataInRow(id);
+		var data = getDataFromRow(id);
 		mod.User.update(data);
 	}
 
