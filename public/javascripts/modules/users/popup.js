@@ -1,4 +1,7 @@
-app.module('users').module('new_user', function(mod, sandbox) {
+app.module('users', function(mod, sandbox) {
+
+	mod.popup = false;
+
 	function closeWindow () {
 		mod.popup = false;
 		return true;
@@ -45,8 +48,4 @@ app.module('users').module('new_user', function(mod, sandbox) {
 		mod.form = form;
 	});
 
-	mod.addInitializer(function (opt) {
-		mod.winCreator = opt.users.popups.holder.dhxWins;
-		mod.popup = false;
-	});
 });

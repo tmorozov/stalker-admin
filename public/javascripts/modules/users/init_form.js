@@ -1,4 +1,4 @@
-app.module('users').module('new_user', function(mod, sandbox) {
+app.module('users', function(mod, sandbox) {
 	mod.initForm = function (holder) {
 		var formData = [ {
 			type: "fieldset",

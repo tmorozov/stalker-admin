@@ -1,6 +1,8 @@
-app.module('users').module('toolbar', function(mod, sandbox) {
+app.module('users', function(mod, sandbox) {
 
-	function initToolbar(holder) {
+	mod.selectedUserId = null;
+
+	mod.initToolbar = function (holder) {
 		var toolbar = holder.attachToolbar();
 		toolbar.addButton('add', 1, 'Add', null, null);
 		toolbar.addButton('del', 2, 'Del', null, null);
@@ -13,18 +15,13 @@ app.module('users').module('toolbar', function(mod, sandbox) {
 			}
 		});
 		return toolbar;
-	}
+	};
 
 	sandbox.on('user:selected', function (id) {
 		mod.selectedUserId = id;
 	});
 
 	sandbox.on('user:deleted', function (id) {
-		mod.selectedUserId = null;
-	});
-
-	mod.addInitializer(function (opt) {
-		mod.toolbar = initToolbar(opt.users.toolbar.holder);
 		mod.selectedUserId = null;
 	});
 });

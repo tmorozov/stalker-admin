@@ -1,4 +1,4 @@
-app.module('serializer', function(mod, sandbox) {
+app.module('users', function(mod, sandbox) {
 
 	sandbox.on('users:read', function () {
 		sandbox.get('/users/')

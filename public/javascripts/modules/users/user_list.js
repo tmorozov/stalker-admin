@@ -1,7 +1,6 @@
-app.module('users').module('list', function(mod, sandbox) {
-	var mod = this;
+app.module('users', function(mod, sandbox) {
 
-	function initGrid(holder) {
+	mod.initGrid = function (holder) {
 		var grid = holder.attachGrid();
 		grid.setHeader("Active,Name,Phone");
 		// grid.attachHeader(",#text_filter,#text_filter");
@@ -11,8 +10,13 @@ app.module('users').module('list', function(mod, sandbox) {
 		// grid.setColSorting("na,str,str");
 		grid.setColumnIds("active,name,phone");
 		grid.init();
+
+		grid.attachEvent("onEditCell",onEditCell);
+		grid.attachEvent("onCheck", onCheck);
+		grid.attachEvent("onRowSelect", onRowSelect);
+
 		return grid;
-	}
+	};
 
 	function onEditCell(stage, rowId, cellIndex, newValue, oldValue) {
 		if ( stage ===2 && newValue !== oldValue) {
@@ -76,12 +80,4 @@ app.module('users').module('list', function(mod, sandbox) {
 		setDataInRow(data);		
 	});
 
-	mod.addInitializer(function (opt) {
-		var users = initGrid(opt.users.list.holder);
-		sandbox.trigger('users:read');
-		users.attachEvent("onEditCell",onEditCell);
-		users.attachEvent("onCheck", onCheck);
-		users.attachEvent("onRowSelect", onRowSelect);
-		mod.users = users;
-	});
 });
