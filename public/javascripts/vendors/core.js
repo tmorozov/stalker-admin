@@ -99,6 +99,7 @@
 	extend(
 		Module.prototype, 
 		Initializer, 
+		Observer,
 		Modulizer
 	);
 

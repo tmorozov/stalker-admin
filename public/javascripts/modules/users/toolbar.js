@@ -9,19 +9,19 @@ app.module('users', function(mod, sandbox) {
 
 		toolbar.attachEvent("onclick", function (id) {
 			if (id === 'add') {
-				sandbox.trigger('user:new');
+				mod.trigger('user:new');
 			} else if (id === 'del' && mod.selectedUserId ) {
-				sandbox.trigger('user:delete', mod.selectedUserId);
+				mod.User.del(mod.selectedUserId);
 			}
 		});
 		return toolbar;
 	};
 
-	sandbox.on('user:selected', function (id) {
+	mod.on('user:selected', function (id) {
 		mod.selectedUserId = id;
 	});
 
-	sandbox.on('user:deleted', function (id) {
+	mod.on('user:deleted', function (id) {
 		mod.selectedUserId = null;
 	});
 });
