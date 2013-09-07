@@ -4,7 +4,7 @@ app.module('users', function(mod, sandbox) {
 		create: function (data) {
 			sandbox.post('/users/', data)
 				.done(function (data) {
-					sandbox.trigger('user:created', data);
+					mod.trigger('user:created', data);
 			});
 		},
 
@@ -15,14 +15,14 @@ app.module('users', function(mod, sandbox) {
 
 			sandbox.del('/users/'+id)
 				.done(function (data) {
-					sandbox.trigger('user:deleted', id);
+					mod.trigger('user:deleted', id);
 				});
 		},
 
 		update: function (data) {
 			sandbox.put('/users/'+data.id, data)
 				.done(function (data) {
-					sandbox.trigger('user:updated', data);
+					mod.trigger('user:updated', data);
 				});
 		}
 	};

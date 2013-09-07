@@ -23,11 +23,11 @@ app.module('users', function(mod, sandbox) {
 		mod.User.create(data);
 	}
 
-	sandbox.on('user:created', function () {
+	mod.on('user:created', function () {
 		mod.popup.close();
 	});
 
-	sandbox.on('user:new', function () {
+	mod.on('user:new', function () {
 		if ( mod.popup ) {
 			return;
 		}

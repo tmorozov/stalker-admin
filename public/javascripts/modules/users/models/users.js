@@ -4,7 +4,7 @@ app.module('users', function(mod, sandbox) {
 		read: function () {
 			sandbox.get('/users/')
 				.done(function (data) {
-					sandbox.trigger('users:readed', data);
+					mod.trigger('users:readed', data);
 				});
 		}
 	};
