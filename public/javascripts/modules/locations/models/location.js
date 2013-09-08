@@ -1,6 +1,6 @@
 app.module('locations', function(mod, sandbox) {
 
-	mod.User = {
+	mod.Location = {
 		create: function (data) {
 			sandbox.post('/locations/', data)
 				.done(function (data) {
