@@ -1,6 +1,6 @@
 app.module('locations', function(mod, sandbox) {
 
-	mod.Users = {
+	mod.Locations = {
 		read: function () {
 			sandbox.get('/locations/')
 				.done(function (data) {
