@@ -9,7 +9,15 @@ app.module('locations', function(mod, sandbox) {
 
 		toolbar.attachEvent("onclick", function (id) {
 			if (id === 'add') {
-				mod.trigger('location:new');
+				// mod.trigger('location:new');
+
+				// temporarily - mock functionality
+				mod.Location.create({
+					description: 'new location',
+					lat: 1,
+					lon: 1
+				});
+
 			} else if (id === 'del' && mod.selectedLocationId ) {
 				mod.Location.del(mod.selectedLocationId);
 			}
