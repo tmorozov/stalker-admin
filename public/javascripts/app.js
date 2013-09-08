@@ -6,6 +6,7 @@ var app = new core.Application(sandbox_extension);
 function initTabbar() {
 	var tabbar = new dhtmlXTabBar(document.body, "top");
 	tabbar.addTab("users","Users","100px");
+	tabbar.addTab("locations","Locations","100px");
 	tabbar.addTab("quests","Quests","100px");
 	return tabbar;
 }
@@ -16,6 +17,9 @@ app.addInitializer(function (options) {
 	core.extend(options, {
 		users: {
 			holder: tabbar.cells('users')
+		},
+		locations: {
+			holder: tabbar.cells('locations')
 		}
 	});
 
