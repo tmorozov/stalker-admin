@@ -4,7 +4,7 @@ app.module('locations', function(mod, sandbox) {
 		create: function (data) {
 			sandbox.post('/locations/', data)
 				.done(function (data) {
-					mod.trigger('locations:created', data);
+					mod.trigger('location:created', data);
 			});
 		},
 
@@ -15,14 +15,14 @@ app.module('locations', function(mod, sandbox) {
 
 			sandbox.del('/locations/'+id)
 				.done(function (data) {
-					mod.trigger('locations:deleted', id);
+					mod.trigger('location:deleted', id);
 				});
 		},
 
 		update: function (data) {
 			sandbox.put('/locations/'+data.id, data)
 				.done(function (data) {
-					mod.trigger('locations:updated', data);
+					mod.trigger('location:updated', data);
 				});
 		}
 	};

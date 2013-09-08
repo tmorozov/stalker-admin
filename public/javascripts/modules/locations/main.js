@@ -9,7 +9,8 @@ app.module('locations', function(mod, sandbox) {
 
 	mod.addInitializer(function (opt) {
 		mod.layout = initLayout(opt.locations.holder);
-
+		
+		mod.toolbar = mod.initToolbar(mod.layout.cells('a'));
 		mod.locations = mod.initGrid(mod.layout.cells('a'));
 		mod.Locations.read();
 	});
