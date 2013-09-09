@@ -55,4 +55,14 @@ app.module('locations', function(mod, sandbox) {
 			markers[points[i].id] = addPoint(points[i]);
 		}
 	});
+
+	mod.on('location:selected', function (id) {
+		var marker = markers[id];
+		if (!marker) {
+			return;
+		}
+
+		mod.map.setCenter(marker.getPosition());
+	});
+
 });
