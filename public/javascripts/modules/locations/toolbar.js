@@ -4,20 +4,16 @@ app.module('locations', function(mod, sandbox) {
 
 	mod.initToolbar = function (holder) {
 		var toolbar = holder.attachToolbar();
-		toolbar.addButton('add', 1, 'Add', null, null);
+		// toolbar.addButton('add', 1, 'Add', null, null);
 		toolbar.addButton('del', 2, 'Del', null, null);
 
 		toolbar.attachEvent("onclick", function (id) {
 			if (id === 'add') {
-				// mod.trigger('location:new');
-
-				// temporarily - mock functionality
-				mod.Location.create({
-					description: 'new location',
-					lat: 1,
-					lon: 1
-				});
-
+				// mod.Location.create({
+				// 	description: 'new location',
+				// 	lat: 1,
+				// 	lon: 1
+				// });
 			} else if (id === 'del' && mod.selectedLocationId ) {
 				mod.Location.del(mod.selectedLocationId);
 			}
