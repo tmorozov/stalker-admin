@@ -1,10 +1,6 @@
 
-var locations = [{
-		id: 1,
-		lat: 100000,
-		lon: 111111,
-		description: "test location"
-	}
+var locations = [
+// {id: 1, lat: 100000, lon: 111111, description: "test location"}
 ];
 
 var next_id = 2;

@@ -3,7 +3,7 @@ app.module('locations', function(mod, sandbox) {
 	mod.initGrid = function (holder) {
 		var grid = holder.attachGrid();
 		grid.setHeader("Description,Lat,Lon");
-		grid.setColTypes("ed,ed,ed");
+		grid.setColTypes("ed,ro,ro");
 		grid.setColumnIds("description,lat,lon");
 		grid.init();
 
