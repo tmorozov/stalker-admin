@@ -8,5 +8,12 @@
   "dependencies": {
     "express": "3.2.6",
     "jade": "*"
+  },
+  "devDependencies": {
+    "phantomjs" : "*",
+    "karma" : "*",
+    "karma-junit-reporter" : "*",    
+    "karma-jasmine" : "*",
+    "karma-ng-scenario" : "*"
   }
 }
