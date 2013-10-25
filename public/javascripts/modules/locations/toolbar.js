@@ -6,6 +6,7 @@ app.module('locations', function(mod, sandbox) {
 		var toolbar = holder.attachToolbar();
 		// toolbar.addButton('add', 1, 'Add', null, null);
 		toolbar.addButton('del', 2, 'Del', null, null);
+		toolbar.addButton('exp', 3, 'Export All', null, null);
 
 		toolbar.attachEvent("onclick", function (id) {
 			if (id === 'add') {
@@ -16,6 +17,8 @@ app.module('locations', function(mod, sandbox) {
 				// });
 			} else if (id === 'del' && mod.selectedLocationId ) {
 				mod.Location.del(mod.selectedLocationId);
+			} else if (id === 'exp') {
+				mod.trigger('export:locations');
 			}
 		});
 		return toolbar;
