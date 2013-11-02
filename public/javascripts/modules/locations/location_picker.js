@@ -5,7 +5,7 @@ app.module('locations', function(mod, sandbox) {
 		var center = mapCenter || [49.8622, 23.9171];
 
 		var mapOptions = {
-			disableDefaultUI: true,
+			disableDefaultUI: false,
 			zoom: 16,
 			center: new google.maps.LatLng(center[0], center[1]),
 			mapTypeId: google.maps.MapTypeId.SATELLITE
@@ -22,6 +22,27 @@ app.module('locations', function(mod, sandbox) {
 
 		mod.map = map;
 	};
+
+  mod.initImg = function () {
+
+    var imageBounds = new google.maps.LatLngBounds(
+      new google.maps.LatLng(49.796500, 24.08200),
+      new google.maps.LatLng(49.811700, 24.11100));
+
+    var imgOverlay = new google.maps.GroundOverlay(
+      '/images/syhov55_5.jpg',
+      imageBounds
+    );
+
+    google.maps.event.addListener(imgOverlay, 'click', function(event) {
+			mod.Location.create({
+				description: 'new location',
+				lat: event.latLng.lat(),
+				lon: event.latLng.lng()
+			});
+		});
+    return imgOverlay;
+  }
 
 	function addPoint(data) {
 		var myLatLng = new google.maps.LatLng(data.lat, data.lon);

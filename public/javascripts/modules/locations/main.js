@@ -15,5 +15,6 @@ app.module('locations', function(mod, sandbox) {
 		mod.Locations.read();
 
 		mod.initMap(mod.layout.cells('b'));
+		mod.initImg().setMap(mod.map);
 	});
 });
