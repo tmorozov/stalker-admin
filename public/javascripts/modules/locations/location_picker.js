@@ -26,11 +26,11 @@ app.module('locations', function(mod, sandbox) {
   mod.initImg = function () {
 
     var imageBounds = new google.maps.LatLngBounds(
-      new google.maps.LatLng(49.796500, 24.08200),
+      new google.maps.LatLng(49.796000, 24.08200),
       new google.maps.LatLng(49.811700, 24.11100));
 
     var imgOverlay = new google.maps.GroundOverlay(
-      '/images/syhov55_5.jpg',
+      '/images/pilot_grid_55.gif',
       imageBounds
     );
 
